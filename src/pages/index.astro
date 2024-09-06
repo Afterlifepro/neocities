@@ -5,9 +5,10 @@ import { NewAppTemplate } from "../components/template";
 import Render from "../components/renderer";
 
 import App from "../components/App.svelte";
+import Shortcut from "../components/Shortcut.svelte";
 ---
 
-<Base title="^-^ Jens cave">
+<Base title="^-^ Jens lil ditch" favicon="favicon.svg">
   <Fragment slot="head">
     <script>
       console.log(`Hey there snooper! welcome to the codebase! this is written using astro, svelte, react, and nanostores, so lots of logic wont work if u copy paste it!
@@ -16,34 +17,46 @@ https://github.com/afterlifepro/neocities
 Feel free to snoop! theres more info in the readme :3`);
     </script>
 
-    <link rel="icon" href="favicon.svg" />
-
     <NewAppTemplate client:load title="gay" id="gay" size={300}>
       Hi from root
     </NewAppTemplate>
     <NewAppTemplate client:load title="gay2" id="gay2" size={300}>
       Hiiiii from root
     </NewAppTemplate>
-    <NewAppTemplate client:load title="gay2" id="gay2" size={300}>
-      Hiiiii from root
+    <NewAppTemplate client:load title="gay3" id="gay2" size={300}>
+      Hiiiiidfsdf from root
     </NewAppTemplate>
-  </Fragment>
 
-  <App
-    slot="body"
-    client:load
-    app={{ title: "debug", content: "debug 1!!", source: "root" }}
-    props={{ width: 500 }}
-  >
-    Debug
-  </App>
-  <App
-    slot="body"
-    client:load
-    app={{ template: "gay2", source: "root" }}
-    props={{ width: 500 }}
-  >
-    Debug 2
-  </App>
-  <Render slot="body" client:only="react" />
+    <style>
+      body {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        grid-template-areas:
+          "w p"
+          "t t";
+        grid-template-columns: 1fr 200px;
+        grid-template-rows: 1fr 30px;
+        .windows {
+          grid-area: w;
+          overflow: clip;
+          position: relative;
+        }
+        .pannel {
+          grid-area: p;
+        }
+
+        .taskbar {
+          grid-area: t;
+        }
+      }
+    </style>
+  </Fragment>
+  <div class="windows">
+    <Shortcut client:load name="Debug" href="gay" icon="./favicon.svg" />
+    <Render client:load />
+  </div>
+  <div class="pannel"></div>
+  <div class="taskbar"></div>
 </Base>
