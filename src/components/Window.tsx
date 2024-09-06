@@ -25,38 +25,28 @@ export default function Window({
   layer,
   children: content,
   id,
-  size = 200,
+  width = 200,
+  maxHeight = 200,
 }) {
   // state for coords
-  const coordsRange = Math.min(
-    Math.min(window.innerWidth, window.innerHeight) * 0.8,
-    600
-  );
+  // ensure windows always spawn within the bounds of the window
   const [posX, setPosX] = useState(
-    Math.floor(Math.random() * coordsRange + 50)
+    Math.floor(Math.max(Math.random() * (window.innerWidth - width), 0))
   );
   const [posY, setPosY] = useState(
-    Math.floor(Math.random() * coordsRange + 50)
+    Math.floor(Math.max(Math.random() * (window.innerHeight - maxHeight), 0))
   );
 
   // object thats dragged
   const draggableRef = useRef(null);
-  // is dragging?
+  // is the object being dragged
   const dragging = useRef(false);
 
   // when clicked make it drag
-  const onMouseDown = useCallback((e) => {
-    if (draggableRef.current) {
-      dragging.current = true;
-    }
-  }, []);
+  const onMouseDown = useCallback((e) => (dragging.current = true), []);
 
-  // make it not drag
-  const onMouseUp = useCallback((e) => {
-    if (dragging.current) {
-      dragging.current = false;
-    }
-  }, []);
+  // when the mouse goes up stop dragging it
+  const onMouseUp = useCallback((e) => (dragging.current = false), []);
 
   // when you move the mouse update the coords if its being dragged
   const onMouseMove = useCallback((e) => {
@@ -71,30 +61,31 @@ export default function Window({
   // the window tracks mouse up and move becuase it doesnt do anything when clicked
   // the cap tracks being clicked bc it needs to be per component
   useEffect(() => {
-    let thisElement = draggableRef.current;
+    let draggy = draggableRef.current;
 
     window.addEventListener("pointerup", onMouseUp);
-    thisElement.addEventListener("pointerdown", onMouseDown);
+    draggy.addEventListener("pointerdown", onMouseDown);
     window.addEventListener("mousemove", onMouseMove);
 
     // this is the cleanup function
     return () => {
       window.removeEventListener("pointerup", onMouseUp);
-      thisElement.removeEventListener("pointerdown", onMouseDown);
+      draggy.removeEventListener("pointerdown", onMouseDown);
       window.removeEventListener("pointermove", onMouseMove);
     };
-  }, [onMouseUp, onMouseDown, onMouseMove, id, draggableRef]);
+  }, [onMouseUp, onMouseDown, onMouseMove, draggableRef]);
 
   return (
     <div
       className="window"
       style={{
-        width: size + "px",
+        width: width + "px",
+        maxHeight: maxHeight + "px",
         zIndex: layer,
         top: posY + "px",
         left: posX + "px",
         position: "absolute",
-        background: "white"
+        background: "white",
       }}
       onMouseDown={() => apps.focusApp(id)}
     >
