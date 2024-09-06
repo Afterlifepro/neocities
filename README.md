@@ -1,3 +1,9 @@
+# coming from neocities?
+i started rewriting my site in astro (with react and svelte) recently, and so i renamed the old repository! (you can find it [here](https://github.com/Afterlifepro/neocities-v2))  
+if you want to see my progress on the rewrite or offer some advice feel free to have a little nosey!  
+the readme below is the pregenerated astro one btw
+
+
 # Astro Starter Kit: Basics
 
 ```sh
