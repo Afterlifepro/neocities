@@ -1,15 +1,37 @@
 ---
 import Base from "../layouts/base.astro";
 
-import {NewAppTemplate} from "../components/template"
+import { NewAppTemplate } from "../components/template";
 import Render from "../components/renderer";
+
+import App from "../components/App.svelte";
 ---
 
 <Base title="^-^ Jens cave">
-  <Fragment slot="head"> 
-		<NewAppTemplate client:only="react" title="gay" id="gay" size={300}>Hi from root</NewAppTemplate>
-    <NewAppTemplate client:only="react" title="gay2" id="gay" size={300}>Hii from root</NewAppTemplate>
+  <Fragment slot="head">
+    <NewAppTemplate client:only="react" title="gay" id="gay" size={300}
+      >Hi from root</NewAppTemplate
+    >
+    <NewAppTemplate client:only="react" title="gay2" id="gay2" size={300}
+      >Hiiiii from root</NewAppTemplate
+    >
   </Fragment>
 
+  <App
+    slot="body"
+    client:load
+    app={{ title: "debug", content: "debug 1!!", source: "root" }}
+    props={{ width: 500 }}
+  >
+    Debug
+  </App>
+  <App
+    slot="body"
+    client:load
+    app={{ template: "gay2", source: "root" }}
+    props={{ width: 500 }}
+  >
+    Debug 2
+  </App>
   <Render slot="body" client:only="react" />
 </Base>

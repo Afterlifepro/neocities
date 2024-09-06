@@ -6,6 +6,7 @@ export function NewAppTemplate({ title, id, size, children: content }) {
     apps.newTemplate = {
       title: title,
       content: content,
+      key: id
     };
   }, []);
   return <></>;
