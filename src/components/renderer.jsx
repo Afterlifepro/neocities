@@ -1,5 +1,6 @@
 import { apps, openApps } from "../store";
 import { useStore } from "@nanostores/react";
+import Window from "./Window";
 
 export default function Render() {
   const $openApps = useStore(openApps);
@@ -17,13 +18,9 @@ export default function Render() {
   let result = []
 
   for (const [i, app] of Object.entries($openApps.apps)) {
-    result.push(<li key={i}>
-      <i>
-        {app.title} ({i}) <button onClick={() => {apps.closeApp(i)}}>X</button> <button onClick={() => apps.focusApp(i)}>{app.layer}</button>
-      </i>
-      <br />
+    result.push(<Window title={app.title} layer={app.layer} id={i} key={i}>
       {app.content}
-    </li>)
+    </Window>)
   }
 
   return (
