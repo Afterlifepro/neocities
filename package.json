@@ -3,13 +3,23 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --port 3000 --host",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.15.1"
+    "@astrojs/react": "^3.6.2",
+    "@astrojs/svelte": "^5.7.0",
+    "@nanostores/react": "^0.7.3",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "astro": "^4.15.1",
+    "nanostores": "^0.11.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "svelte": "^4.2.19",
+    "typescript": "^5.5.4"
   }
 }
