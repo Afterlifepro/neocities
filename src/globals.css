@@ -1,0 +1,13 @@
+:root {
+    font-size: 10px;
+    font-family: "W95FA", sans-serif;
+
+    --window-bg: #008282;
+    --cap: #000080;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+}

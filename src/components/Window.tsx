@@ -6,7 +6,7 @@ function Cap({ title, id, moveRef }) {
     <div
       ref={moveRef}
       className="cap"
-      style={{ background: "blue", color: "white" }}
+      style={{ background: "var(--cap)", color: "white" }}
     >
       {title}{" "}
       <button
