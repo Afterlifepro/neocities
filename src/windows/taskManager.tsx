@@ -1,19 +1,22 @@
 import { apps, openApps } from "../store";
 import { useStore } from "@nanostores/react";
-import Window from "./Window";
 
-export default function Render() {
+export default function TaskManager() {
   const $openApps = useStore(openApps);
 
   let result = [];
 
   for (const [i, app] of Object.entries($openApps.apps)) {
     result.push(
-      <Window title={app.title} layer={app.layer} icon={app.icon} id={i} key={i}>
-        {app.content}
-      </Window>
+      <tr><th>{app.title}</th><td>Icon</td><button
+      onClick={() => {
+        apps.closeApp(i);
+      }}
+    >
+      X
+    </button></tr>
     );
   }
 
-  return <>{result}</>;
+  return <table>{result}</table>;
 }

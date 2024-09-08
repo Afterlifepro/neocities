@@ -1,10 +1,12 @@
 ---
 import Base from "../layouts/base.astro";
 
-import "../globals.css"
+import "../globals.css";
 
 import { NewAppTemplate } from "../components/template";
 import Render from "../components/renderer";
+
+import TaskManager from "../windows/taskManager";
 
 import App from "../components/App.svelte";
 import Counter from "../windows/counter.svelte";
@@ -23,61 +25,46 @@ https://github.com/afterlifepro/neocities
 Feel free to snoop! theres more info in the readme :3`);
     </script>
 
-<style>
-  body {
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template-areas:
-      "w p"
-      "t t";
-    grid-template-columns: 1fr 200px;
-    grid-template-rows: 1fr 30px;
+    <style>
+      body {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 30px;
 
-    @media screen only (max-width: 400px) {
-      & {grid-template-areas: "w" "p" "t"
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 200px 30px;}
-    }
+        .windows {
+          overflow: clip;
+          position: relative;
+          display: grid;
+          grid-auto-columns: 80px;
+          grid-auto-rows: 100px;
+          background-color: var(--window-bg);
+        }
 
-    .windows {
-      grid-area: w;
-      overflow: clip;
-      position: relative;
-      display: grid;
-      grid-auto-columns: 80px;
-      grid-auto-rows: 100px;
-      background-color: var(--window-bg);
-    }
-    .pannel {
-      grid-area: p;
-      border-style: solid;
-      border-width: 5px 5px 0 5px;
-      border-color: white black black white;
-      background-color: #c3c3c3
-    }
+        .taskbar {
+          border-style: solid;
+          border-width: 1px;
+          border-color: white black black white;
+          background-color: #c3c3c3;
+        }
+      }
+    </style>
 
-    .taskbar {
-      grid-area: t;
-      border-style: solid;
-      border-width: 5px;
-      border-color: white black black white;
-      background-color: #c3c3c3
-    }
-  }
-</style>
-
-    <NewAppTemplate client:load title="gay" id="gay" size={300}>
-      Hi from root <Counter client:load /> <App app={{template:"gay2", source: "testing"}} client:load >Clickable</App>
+    <NewAppTemplate client:load title="gay" id="gay" icon={"https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"} >
+      Hi from root <Counter client:load />
+      <App app={{ template: "gay2", source: "testing" }} client:load
+        >Clickable</App
+      >
     </NewAppTemplate>
-    <NewAppTemplate client:load title="gay2" id="gay2" size={300}>
+    <NewAppTemplate client:load title="gay2" id="gay2" >
       Hiiiii from root
+      <TaskManager client:load />
     </NewAppTemplate>
-    <NewAppTemplate client:load title="gay3" id="gay3" size={300}>
+    <NewAppTemplate client:load title="gay3" id="gay3" >
       Hiiiiidfsdf from root
     </NewAppTemplate>
-
   </Fragment>
   <div class="windows">
     <Shortcut
@@ -85,10 +72,9 @@ Feel free to snoop! theres more info in the readme :3`);
       name="Debug"
       href="gay"
       icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
-      />
-      <!-- icon={import.meta.env.BASE_URL + "favicon.svg"} -->
+    />
+    <!-- icon={import.meta.env.BASE_URL + "favicon.svg"} -->
     <Render client:load />
   </div>
-  <div class="pannel"></div>
   <div class="taskbar"></div>
 </Base>

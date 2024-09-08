@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { apps } from "../store";
 
-export function NewAppTemplate({ title, id, size, children: content }) {
+export function NewAppTemplate({ title, id, icon, children: content }) {
   useEffect(() => {
     apps.newTemplate = {
       title: title,
       content: content,
-      key: id
+      icon: icon,
+      key: id,
     };
   }, []);
   return <></>;

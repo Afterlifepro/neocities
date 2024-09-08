@@ -23,7 +23,7 @@ export const apps = {
    * @param {string} title the title of the window
    * @param {any} content the content rendered in the app
    */
-  set newApp(app: { title; content; source } | { template; source }) {
+  set newApp(app: { title; content; icon?, source } | { template; source }) {
     let result: { [key: string]: any } = {
       index: this.newIndex,
       source: app.source,
@@ -37,6 +37,10 @@ export const apps = {
     }
     openApps.setKey(`apps[${result.index}]`, result);
   },
+  /**
+   * close an app based on id
+   * @param id id of the app to close
+   */
   closeApp(id) {
     const newApps = Object.keys(openApps.get().apps).reduce((acc, key) => {
       if (key !== id) {
@@ -51,10 +55,11 @@ export const apps = {
    * @param {string} title the name of the app
    * @param {any} content the content of the app
    */
-  set newTemplate({ title, content, key }) {
-    templateApps.setKey(`${key}`, {
-      title: title,
-      content: content,
+  set newTemplate(template: { title; content; icon?; key }) {
+    templateApps.setKey(`${template.key}`, {
+      title: template.title,
+      content: template.content,
+      icon: template.icon
     });
   },
   /**
@@ -77,11 +82,21 @@ export const apps = {
     openApps.get().latestIndex += 1;
     return openApps.get().latestIndex;
   },
+  /**
+   * get the next layer for windows
+   */
   get newLayer() {
     openApps.get().latestLayer += 1;
     return openApps.get().latestLayer;
   },
+  /**
+   * focuses an app based on id
+   * @param id id of the app to focus
+   */
   focusApp(id) {
-    openApps.setKey(`apps[${id}]`, { ...openApps.get().apps[id], layer: this.newLayer });
+    openApps.setKey(`apps[${id}]`, {
+      ...openApps.get().apps[id],
+      layer: this.newLayer,
+    });
   },
 };
