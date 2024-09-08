@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
   import { apps } from "../store";
 
-  export let icon = "";
-  export let href;
-  export let name;
-  export let external = false;
+  export let icon: string = "";
+  export let href: string;
+  export let name: string;
+  export let external: boolean = false;
 </script>
 
 <button
