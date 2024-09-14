@@ -1,0 +1,36 @@
+.window {
+  width: var(--width, 20rem);
+  max-height: var(--max-height, 40rem);
+  z-index: var(--layer, 0);
+  top: var(--y, 0);
+  left: var(--x, 0);
+  position: absolute;
+  background: white;
+  border: 2px solid black;
+  border-color: var(--border-extrude);
+  box-sizing: content-box;
+  & .cap {
+    background: var(--cap-colour, var(--cap));
+    color: var(--cap-text-colour, white);
+    height: 2.2rem;
+    padding: 0.2rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-bottom: 2px solid black;
+    & img {
+        height: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+    }
+    & div {
+        flex-grow: 1;
+    }
+  }
+  & .winContent {
+    max-height: calc(var(--max-height, 20rem) - 2.2rem);
+    overflow: auto;
+    padding: 0.5rem;
+    padding-top: 0;
+  }
+}

@@ -1,32 +1,21 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import { apps } from "../store";
+import "./Window.scoped.css";
 
-function Goobers({length}: {length: number}) {
-
-}
+function Goobers({ length }: { length: number }) {}
 
 function Cap({ title, id, moveRef, icon }) {
   return (
-    <div
-      ref={moveRef}
-      className="cap"
-      style={{
-        background: "var(--cap)",
-        color: "white",
-        height: "2.2rem",
-        display: "flex",
-        justifyContent: "start",
-        alignItems: "center",
-      }}
-    >
-      {icon ? (
-        <img
-          src={icon}
-          style={{ height: "100%", aspectRatio: 1, objectFit: "cover" }}
-        />
-      ) : null}
+    <div ref={moveRef} className="cap">
+      {icon ? <img src={icon} /> : null}
       {title}
-      <div style={{ flexGrow: 1 }}></div>
+      <div></div>
       <button
         onClick={() => {
           apps.closeApp(id);
@@ -44,8 +33,18 @@ export default function Window({
   children: content,
   id,
   icon,
+  capColour,
   width = 200,
   maxHeight = 400,
+}: {
+  title;
+  layer;
+  children;
+  id;
+  icon?;
+  capColour?;
+  width?;
+  maxHeight?;
 }) {
   // state for coords
   // ensure windows always spawn within the bounds of the window
@@ -102,27 +101,21 @@ export default function Window({
   return (
     <div
       className="window"
-      style={{
-        width: width/10 + "rem",
-        maxHeight: maxHeight/10 + "rem",
-        zIndex: layer,
-        top: posY + "px",
-        left: posX + "px",
-        position: "absolute",
-        background: "white",
-      }}
+      style={
+        {
+          "--cap-colour": capColour ?? null,
+          "--cap-text-colour": "white" ?? null,
+          "--x": posX + "px",
+          "--y": posY + "px",
+          "--width": width / 10 + "rem",
+          "--max-height": maxHeight / 10 + "rem",
+          "--layer": layer,
+        } as CSSProperties & { [key: string]: any }
+      }
       onMouseDown={() => apps.focusApp(id)}
     >
       <Cap moveRef={draggableRef} title={title} id={id} icon={icon} />
-      <div
-        className="winContent"
-        style={{
-          maxHeight: "calc(" + maxHeight/10 + "rem - 2.2rem)",
-          overflow: "auto",
-        }}
-      >
-        {content}
-      </div>
+      <div className="winContent">{content}</div>
     </div>
   );
 }

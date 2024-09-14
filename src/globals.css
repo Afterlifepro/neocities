@@ -24,6 +24,8 @@
 *,
 *::before,
 *::after {
+  font: inherit;
+  font-size: 1.4rem;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -31,7 +33,6 @@
   margin-block: 0;
   padding-inline: 0;
   padding-block: 0;
-  font: inherit;
   accent-color: var(--accent);
   outline-color: var(--accent);
 }
@@ -65,6 +66,13 @@ fieldset {
   margin: 0.25rem;
   padding: 0.25rem;
   border: 0.1rem solid;
+  width: fit-content;
+  float: left;
+  padding: 0.5rem;
+  &.nofloat {
+    width: initial;
+    float: none;
+  }
 }
 input {
   /* normal input */
