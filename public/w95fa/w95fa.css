@@ -1,0 +1,8 @@
+/* w95fa */
+@font-face {
+	font-family: "W95FA";
+	font-style: normal;
+	font-weight: 400;
+	src: local("W95FA"), local("W95FARegular"), url(w95fa.woff2) format("woff2"), url(w95fa.woff) format("woff");
+}
+

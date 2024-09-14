@@ -1,0 +1,9 @@
+/* monaspace-neon-var-regular */
+@font-face {
+	font-family: "Monaspace";
+	font-style: normal;
+	font-weight: 400;
+	font-display: block;
+	src: local("Monaspace Neon Var Regular"), local("MonaspaceNeonVar-Regular"), url(monaspace-neon-var-regular.woff2) format("woff2"), url(monaspace-neon-var-regular.woff) format("woff");
+}
+

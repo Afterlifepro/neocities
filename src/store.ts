@@ -7,6 +7,8 @@ export type app = {
   title: string;
   content: any;
   icon?;
+  width?;
+  maxHeight?;
   index: number;
   source: string;
   layer: number;
@@ -122,6 +124,8 @@ export const apps = {
       title: template.title,
       content: template.content,
       icon: template.icon,
+      width: template.width,
+      maxHeight: template.maxHeight,
     });
   },
 

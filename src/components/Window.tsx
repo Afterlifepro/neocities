@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { apps } from "../store";
 
+function Goobers({length}: {length: number}) {
+
+}
+
 function Cap({ title, id, moveRef, icon }) {
   return (
     <div
@@ -99,8 +103,8 @@ export default function Window({
     <div
       className="window"
       style={{
-        width: width + "px",
-        maxHeight: maxHeight + "px",
+        width: width/10 + "rem",
+        maxHeight: maxHeight/10 + "rem",
         zIndex: layer,
         top: posY + "px",
         left: posX + "px",
@@ -113,7 +117,7 @@ export default function Window({
       <div
         className="winContent"
         style={{
-          maxHeight: "calc(" + maxHeight + "px - 2.2rem)",
+          maxHeight: "calc(" + maxHeight/10 + "rem - 2.2rem)",
           overflow: "auto",
         }}
       >

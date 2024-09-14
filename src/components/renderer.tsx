@@ -17,8 +17,10 @@ export default function Render() {
           title={app.title}
           layer={app.layer}
           icon={app.icon}
-          id={i}
-          key={i}
+          width={app.width}
+          maxHeight={app.maxHeight}
+          id={parseInt(i)}
+          key={parseInt(i)}
         >
           {app.content}
         </Window>,

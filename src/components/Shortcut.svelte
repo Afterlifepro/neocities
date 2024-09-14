@@ -17,7 +17,7 @@
         window.open(href);
       }}
 >
-  <figure>
+  <figure data-shortcut>
     <img src={icon} alt="" />
     <figcaption>
       {name}
@@ -41,7 +41,7 @@
       aspect-ratio: 1;
       object-fit: cover;
     }
-    & h1 {
+    & figcaption {
       font-size: 1.5rem;
     }
     & img:not([alt=""]) {
