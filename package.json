@@ -3,7 +3,8 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev --port 3000 --host",
+    "dev": "astro dev --port 3000",
+    "dev-qr": "node devQR.js",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -20,12 +21,12 @@
     "svelte": "^4.2.19"
   },
   "devDependencies": {
-    "postcss": "^8.4.45",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.20",
-    "cssnano": "^7.0.6",
+    "ip": "^2.0.1",
+    "postcss": "^8.4.45",
     "postcss-preset-env": "^10.0.3",
+    "qrcode": "^1.5.4",
     "typescript": "^5.5.4"
   }
 }
