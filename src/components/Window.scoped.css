@@ -1,14 +1,15 @@
 .window {
-  width: var(--width, 20rem);
-  max-height: var(--max-height, 40rem);
+  width: min(var(--width, 20rem), 95svw);
+  max-height: min(var(--max-height, 40rem), 95svh);
   z-index: var(--layer, 0);
   top: var(--y, 0);
   left: var(--x, 0);
   position: absolute;
-  background: white;
-  border: 2px solid black;
-  border-color: var(--border-extrude);
   box-sizing: content-box;
+  background: white;
+  border: 0.2rem solid black;
+  border-color: var(--border-extrude);
+  box-shadow: 0.4rem 0.4rem #00000080;
   & .cap {
     background: var(--cap-colour, var(--cap));
     color: var(--cap-text-colour, white);
@@ -17,20 +18,27 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    border-bottom: 2px solid black;
+    border-bottom: 0.2rem solid black;
+    user-select: none;
     & img {
-        height: 100%;
-        aspect-ratio: 1;
-        object-fit: cover;
+      height: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
     }
     & div {
-        flex-grow: 1;
+      flex-grow: 1;
+    }
+
+    & button {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
   & .winContent {
     max-height: calc(var(--max-height, 20rem) - 2.2rem);
     overflow: auto;
     padding: 0.5rem;
-    padding-top: 0;
   }
 }

@@ -65,6 +65,7 @@ export default function Window({
   // when clicked make it drag
   const onMouseDown = useCallback((e) => {
     dragging.current = true;
+    apps.focusApp(id)
     origin.current = { x: e.offsetX, y: e.offsetY };
   }, []);
 
@@ -88,7 +89,7 @@ export default function Window({
 
     window.addEventListener("pointerup", onMouseUp);
     draggy.addEventListener("pointerdown", onMouseDown);
-    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("pointermove", onMouseMove);
 
     // this is the cleanup function
     return () => {
@@ -110,7 +111,7 @@ export default function Window({
           "--width": width / 10 + "rem",
           "--max-height": maxHeight / 10 + "rem",
           "--layer": layer,
-        } as CSSProperties & { [key: string]: any }
+        } as CSSProperties & { [key: `--${string}`]: any }
       }
       onMouseDown={() => apps.focusApp(id)}
     >
