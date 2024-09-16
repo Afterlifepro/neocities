@@ -9,8 +9,8 @@
 * PALLETE *
 **********/
 :root {
-  font-size: 10px;
-  font-family: "W95FA", sans-serif;
+  font-size: calc(10px * var(--scale, 1));
+  font-family: var(--fonts, "W95FA", sans-serif);
 
   --desktop-bg: #008282;
   --cap: #000080;
@@ -81,18 +81,121 @@ input {
   background-color: var(--window);
   margin: 0.1rem;
 
-  /* &[type="range"] {
+  &[type="range"] {
     accent-color: var(--accent);
+    appearance: none;
+    height: 1rem;
+    width: 100%;
+    background-color: hsl(from var(--window) h s calc(l * 0.8) / alpha);
+    /* border: none; */
+
+    &::-moz-range-thumb,
+    &::-webkit-slider-thumb {
+      border-radius: 0;
+      background-color: var(--window);
+      border-width: 0.2rem;
+      height: 1rem;
+      width: 1rem;
+      border-color: var(--border-extrude);
+    }
+
+    &::-moz-range-progress {
+      background-color: var(--accent);
+      height: 100%;
+    }
+
+    &:focus-within {
+      &::-moz-range-thumb, &::-webkit-slider-thumb {
+        outline: 0.2rem solid var(--accent-focus);
+      }
+    }
   }
   &[type="radio"] {
-    accent-color: var(--accent);
+
+    /* apply size */
+    height: 1rem;
+    aspect-ratio: 1;
+
+    /* propper cursor for accessability */
+    cursor: pointer;
+
+    /* margin block to add space below prev element */
+    margin-block-start: 2px;
+    /* add borders and account for them */
+    border: 0.2rem solid var(--border-intrude);
+    /* rounded edges */
+    border-radius: 100%;
+
+    /* hide basic checkbox */
+    appearance: none;
+    -webkit-appearance: none;
+    /* allow resizing */
+    display: inline-block;
+
+    /* off colour */
+    background-color: transparent;
+
+    /* allow positioning of toggle properly */
+    position: relative;
+
+    &::before {
+      /* off state */
+
+      /* remove content */
+      content: "";
+      /* make a hollow circle (12 edges) */
+      clip-path: polygon(
+        50% 0%,
+        25% 7%,
+        7% 25%,
+        0% 50%,
+        7% 75%,
+        25% 93%,
+        50% 100%,
+        75% 93%,
+        93% 75%,
+        100% 50%,
+        93% 25%,
+        75% 7%,
+        50% 0%,
+        50% 25%,
+        65.22% 34.78%,
+        75% 50%,
+        66.67% 66.67%,
+        50% 75%,
+        33.33% 66.67%,
+        25% 50%,
+        33.33% 33.33%,
+        50% 25%
+      );
+      background-color: black;
+
+      /* calc and apply height and width */
+      width: 8px;
+      height: 8px;
+      /* position in parent */
+      position: absolute;
+      top: 1px;
+      left: 1px;
+
+      opacity: 0;
+    }
+
+    &:checked {
+      /* on state */
+      background-color: var(--accent);
+
+      &::before {
+        opacity: 1;
+      }
+    }
   }
   &[type="checkbox"] {
     accent-color: var(--accent);
   }
   &[type="checkbox"][data-toggle] {
     accent-color: var(--accent);
-  } */
+  }
 }
 /* progress {
   accent-color: var(--accent);
@@ -232,7 +335,7 @@ kbd {
     height: var(--keyHeight);
     background-color: #9e9c94;
     content: "";
-    display: block; 
+    display: block;
     position: absolute;
     left: 0;
     bottom: calc(var(--keyHeight) * -1);

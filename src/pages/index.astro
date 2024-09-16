@@ -5,8 +5,10 @@ import "../globals.css";
 
 import { NewAppTemplate } from "../components/template.tsx";
 import Render from "../components/renderer.tsx";
+// import Taskbar from "../components/taskbar.tsx";
 
-import TaskManager from "../windows/taskManager";
+import TaskManager from "../windows/taskManager.tsx";
+import Settings from "../windows/settings.svelte";
 
 import App from "../components/App.svelte";
 import Counter from "../windows/counter.svelte";
@@ -23,13 +25,25 @@ import Shortcut from "../components/Shortcut.svelte";
 This code is freely avaliable at: 
 https://github.com/afterlifepro/neocities 
 Feel free to snoop! theres more info in the readme :3`);
+
+      import settings from "../settings";
+
+      const root = document.documentElement;
+
+      settings.value.subscribe((settings) => {
+        root.style.setProperty("--scale", settings.scale.toString());
+        root.style.setProperty(
+          "--fonts",
+          settings.pixel ? "W95FA, sans-serif" : "sans-serif"
+        );
+      });
     </script>
 
     <style>
       body {
         margin: 0;
-        width: 100vw;
-        height: 100vh;
+        width: 100dvw;
+        height: 100dvh;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 3rem;
@@ -38,8 +52,9 @@ Feel free to snoop! theres more info in the readme :3`);
           overflow: clip;
           position: relative;
           display: grid;
-          grid-auto-columns: 8rem;
-          grid-auto-rows: 10rem;
+          grid-template-columns: repeat(auto-fit, 8rem);
+          grid-template-rows: repeat(auto-fit, 10rem);
+          grid-auto-flow: column;
           background: var(--desktop-bg);
         }
 
@@ -66,7 +81,13 @@ Feel free to snoop! theres more info in the readme :3`);
     <NewAppTemplate client:load title="task manager" id="taskman">
       <TaskManager client:load />
     </NewAppTemplate>
-    <NewAppTemplate client:load title="styles" id="styles" width={500}>
+    <NewAppTemplate
+      client:load
+      title="styles"
+      id="styles"
+      width={500}
+      icon={"https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"}
+    >
       <fieldset>
         <legend>Test</legend>
         <progress value="0.7"></progress>
@@ -296,34 +317,46 @@ Feel free to snoop! theres more info in the readme :3`);
     </NewAppTemplate>
     <NewAppTemplate client:load title="Licenses" id="license">
       <h1>Licenses</h1>
-      <p>
-        This website uses the following fonts:
-      </p>
+      <p>This website uses the following fonts:</p>
       <ul>
         <li>
           <a href="https://www.dafont.com/w95fa.font">W95FA</a> - Licensed under
-          <a href="https://scripts.sil.org/cms/scripts/page.php?id=OFL_web">SIL OpenFont License</a>
+          <a href="https://scripts.sil.org/cms/scripts/page.php?id=OFL_web"
+            >SIL OpenFont License</a
+          >
         </li>
         <li>
-          <a href="https://www.1001fonts.com/7-12-serif-font.html">7:12 Serif Font</a> - Licensed under the
-          <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution License (CC BY-SA 3.0)</a>
+          <a href="https://www.1001fonts.com/7-12-serif-font.html"
+            >7:12 Serif Font</a
+          > - Licensed under the
+          <a href="https://creativecommons.org/licenses/by-sa/3.0/"
+            >Creative Commons Attribution License (CC BY-SA 3.0)</a
+          >
           <br />
-          Created by <a href="https://www.1001fonts.com/users/christianmunk/">Christian Munk</a>
+          Created by <a href="https://www.1001fonts.com/users/christianmunk/"
+            >Christian Munk</a
+          >
         </li>
         <li>
-          <a href="https://monaspace.githubnext.com/">Github Monaspace Neon</a> - Licensed under
-          <a href="https://scripts.sil.org/cms/scripts/page.php?id=OFL_web">SIL OpenFont License</a>
+          <a href="https://monaspace.githubnext.com/">Github Monaspace Neon</a> -
+          Licensed under
+          <a href="https://scripts.sil.org/cms/scripts/page.php?id=OFL_web"
+            >SIL OpenFont License</a
+          >
           <br />
           Created by <a href="https://github.com/">Github</a>
         </li>
       </ul>
+    </NewAppTemplate>
+    <NewAppTemplate client:load title="Settings" id="settings">
+      <Settings client:load />
     </NewAppTemplate>
   </Fragment>
   <div class="windows">
     <Shortcut
       client:load
       name="Debug"
-      href="gay"
+      href="taskman"
       icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
     />
     <Shortcut
@@ -344,7 +377,15 @@ Feel free to snoop! theres more info in the readme :3`);
       href="license"
       icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
     />
+    <Shortcut
+      client:load
+      name="Settings"
+      href="settings"
+      icon="https://images.freeimages.com/images/large-previews/0a8/cog-1521245.jpg"
+    />
     <Render client:load />
   </div>
-  <div class="taskbar"></div>
+  <!-- <div class="taskbar">
+    <Taskbar client:load />
+  </div> -->
 </Base>

@@ -14,7 +14,7 @@ export default function TaskManager() {
         ...results,
         <tr key={i}>
           <th>{app.title}</th>
-          <td>Icon</td>
+          <td><img src={app.icon} alt="" style={{ objectFit: "cover", aspectRatio: 1, height: "2rem" }} /></td>
           <td>
             <button
               onClick={() => {
