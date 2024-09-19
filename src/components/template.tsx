@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { apps } from "../store";
 
-export function NewAppTemplate(props: {
+export default function NewAppTemplate(props: {
   title;
   id;
   icon?;

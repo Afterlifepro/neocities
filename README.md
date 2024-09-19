@@ -3,58 +3,28 @@ i started rewriting my site in astro (with react and svelte) recently, and so i 
 if you want to see my progress on the rewrite or offer some advice feel free to have a little nosey!  
 the readme below is the pregenerated astro one btw
 
+# Licenses
+All code found in this repository is licensed under [GNU GPL v3](COPYING).  
+All assets located in `/src/assets/oc/` are licensed under [UK copyright law](https://www.gov.uk/copyright).  
+All assets located in `/src/assets/not-oc/` are separated into subfolders and licensed based on a license file in that folder Attribution is also provided to the original author.  
+I may not have legal rights over assets stored externally, such as via file hosts or hotlinks. Please see the original creators license for the asset. 
 
-# Astro Starter Kit: Basics
 
+# Installation
+To install this repository: ensure Node.JS and pnpm are installed on your machine, then, inside the project directory, run:
 ```sh
-npm create astro@latest -- --template basics
+pnpm install
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+This will install all dependencies for the project. Then simply run the following command to open a development server.
+```sh
+pnpm run dev
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+# Commands
+|Command |Usage |
+|:--|:--|
+|`pnpm run dev`|Run a development server|
+|`pnpm run dev-qr`|Run a development server available on your local network and log a QR code which can be scanned to access the site.|
+|`pnpm run start`|Synonym of `pnpm run dev`|
+|`pnpm run build`|Builds the site to the `/dist/` folder|
+|`pnpm run preview`|Preview the contents of `/dist/` as a development server|
+|`pnpm run astro`|Append any astro command to then end to run said command.|
