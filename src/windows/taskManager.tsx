@@ -5,16 +5,22 @@ import { useStore } from "@nanostores/react";
 export default function TaskManager() {
   const $openApps = useStore(openApps);
 
-  let [result, setResult] = useState([]);
+  const [result, setResult] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
-    setResult([])
+    setResult([]);
     for (const [i, app] of Object.entries($openApps.apps)) {
       setResult((results) => [
         ...results,
         <tr key={i}>
           <th>{app.title}</th>
-          <td><img src={app.icon} alt="" style={{ objectFit: "cover", aspectRatio: 1, height: "2rem" }} /></td>
+          <td style={{ width: "2rem", height: "2rem" }}>
+            <img
+              src={app.icon}
+              alt=""
+              style={{ width: "100%", height: "100%" }}
+            />
+          </td>
           <td>
             <button
               onClick={() => {

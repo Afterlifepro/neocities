@@ -8,14 +8,13 @@ import {
 import { apps } from "../store";
 import "./Window.scoped.css";
 
-function Goobers({ length }: { length: number }) {}
+// function Goobers({ length }: { length: number }) {}
 
-function Cap({ title, id, moveRef, icon }) {
+function Cap({ title, id, moveRef, icon }:{ title:string, id:number, moveRef: any, icon:string }) {
   return (
     <div ref={moveRef} className="cap">
       {icon ? <img src={icon} /> : null}
-      {title}
-      <div></div>
+      <div>{title}</div>
       <button
         onClick={() => {
           apps.closeApp(id);
@@ -37,14 +36,14 @@ export default function Window({
   width = 200,
   maxHeight = 400,
 }: {
-  title;
-  layer;
-  children;
-  id;
-  icon?;
-  capColour?;
-  width?;
-  maxHeight?;
+  title: any;
+  layer: any;
+  children: any;
+  id: any;
+  icon?: any;
+  capColour?: any;
+  width?: any;
+  maxHeight?: any;
 }) {
   // state for coords
   // ensure windows always spawn within the bounds of the window
@@ -63,17 +62,17 @@ export default function Window({
   const dragging = useRef(false);
 
   // when clicked make it drag
-  const onMouseDown = useCallback((e) => {
+  const onMouseDown = useCallback((e: { offsetX: any; offsetY: any; }) => {
     dragging.current = true;
     apps.focusApp(id)
     origin.current = { x: e.offsetX, y: e.offsetY };
   }, []);
 
   // when the mouse goes up stop dragging it
-  const onMouseUp = useCallback((e) => (dragging.current = false), []);
+  const onMouseUp = useCallback(() => (dragging.current = false), []);
 
   // when you move the mouse update the coords if its being dragged
-  const onMouseMove = useCallback((e) => {
+  const onMouseMove = useCallback((e: { clientX: number; clientY: number; }) => {
     if (dragging.current) {
       setPosX(e.clientX - origin.current.x); // - origin.current.x);
       setPosY(e.clientY - origin.current.y); // - origin.current.y);
@@ -85,7 +84,7 @@ export default function Window({
   // the window tracks mouse up and move becuase it doesnt do anything when clicked
   // the cap tracks being clicked bc it needs to be per component
   useEffect(() => {
-    let draggy = draggableRef.current;
+    const draggy = draggableRef.current;
 
     window.addEventListener("pointerup", onMouseUp);
     draggy.addEventListener("pointerdown", onMouseDown);
@@ -104,8 +103,8 @@ export default function Window({
       className="window"
       style={
         {
-          "--cap-colour": capColour ?? null,
-          "--cap-text-colour": "white" ?? null,
+          "--cap-colour": capColour, // ?? null,
+          "--cap-text-colour": "white", // ?? null,
           "--x": posX + "px",
           "--y": posY + "px",
           "--width": width / 10 + "rem",

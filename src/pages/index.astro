@@ -5,7 +5,7 @@ import "../globals.css";
 
 import { NewAppTemplate } from "../components/template.tsx";
 import Render from "../components/renderer.tsx";
-// import Taskbar from "../components/taskbar.tsx";
+import Taskbar from "../components/taskbar.tsx";
 
 import TaskManager from "../windows/taskManager.tsx";
 import Settings from "../windows/settings.svelte";
@@ -28,10 +28,14 @@ Feel free to snoop! theres more info in the readme :3`);
 
       import settings from "../settings";
 
-      const root = document.documentElement;
+      const root: HTMLElement = document.documentElement;
 
       settings.value.subscribe((settings) => {
         root.style.setProperty("--scale", settings.scale.toString());
+        root.style.setProperty(
+          "--scale-str",
+          `"${(settings.scale * 100).toString()}%"`
+        );
         root.style.setProperty(
           "--fonts",
           settings.pixel ? "W95FA, sans-serif" : "sans-serif"
@@ -56,13 +60,6 @@ Feel free to snoop! theres more info in the readme :3`);
           grid-template-rows: repeat(auto-fit, 10rem);
           grid-auto-flow: column;
           background: var(--desktop-bg);
-        }
-
-        .taskbar {
-          border-style: solid;
-          border-width: 0.2rem 0 0 0;
-          border-color: white;
-          background-color: #c3c3c3;
         }
       }
     </style>
@@ -351,6 +348,11 @@ Feel free to snoop! theres more info in the readme :3`);
     <NewAppTemplate client:load title="Settings" id="settings">
       <Settings client:load />
     </NewAppTemplate>
+    <NewAppTemplate
+      client:load
+      title="Really really long super duper long title it never seems to end dude whats up"
+      id="long">Long</NewAppTemplate
+    >
   </Fragment>
   <div class="windows">
     <Shortcut
@@ -383,9 +385,13 @@ Feel free to snoop! theres more info in the readme :3`);
       href="settings"
       icon="https://images.freeimages.com/images/large-previews/0a8/cog-1521245.jpg"
     />
+    <Shortcut
+      client:load
+      name="Long"
+      href="long"
+      icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
+    />
     <Render client:load />
   </div>
-  <!-- <div class="taskbar">
-    <Taskbar client:load />
-  </div> -->
+  <Taskbar client:load />
 </Base>

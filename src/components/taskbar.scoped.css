@@ -1,0 +1,56 @@
+/* positioning code
+THIS TOOK SO MUCH WORK AND I DONT KNOW WHY */
+.taskbar {
+  display: grid;
+  grid-auto-columns: min-content;
+  grid-auto-flow: column;
+  width: 100%;
+  overflow-y: auto;
+  .taskbar-app {
+    min-width: 2.5rem;
+    max-width: 15rem;
+    width: min-content;
+    height: 3rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    overflow: clip;
+
+    /* div children have inline block */
+    & div {
+      display: inline-block;
+    }
+    /* text */
+    & div + div {
+      height: 1em;
+      overflow: hidden;
+    }
+    /* image div */
+    & div:has(img) {
+      height: 2rem;
+    }
+    /* image */
+    & img {
+      height: 100%;
+      aspect-ratio: 1;
+    }
+  }
+}
+
+.taskbar {
+  background-color: var(--window);
+  border: 0 solid white;
+  border-top-width: 0.2rem;
+  .taskbar-app {
+    padding: 0.5rem;
+    border: 0.2rem solid;
+    border-color: var(--border-extrude);
+    border-top-width: 0;
+    overflow: clip;
+    & div + div {
+        max-width: 13.6rem; /* 15rem (max width) - 0.5rem*2 (padding) - 0.2rem*2 (border on left and right */
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}

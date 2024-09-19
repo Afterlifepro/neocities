@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export default function Render() {
   const $openApps = useStore(openApps);
 
-  let [result, setResult] = useState([]);
+  const [result, setResult] = useState([]);
 
   useEffect(() => {
     setResult([]);

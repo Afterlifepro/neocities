@@ -26,6 +26,8 @@
       object-fit: cover;
     }
     & div {
+      overflow: hidden;
+      height: 100%;
       flex-grow: 1;
     }
 
@@ -40,5 +42,9 @@
     max-height: calc(var(--max-height, 20rem) - 2.2rem);
     overflow: auto;
     padding: 0.5rem;
+  }
+
+  &:has(.cap:active) {
+    outline: 0.5rem solid var(--accent-focus);
   }
 }
