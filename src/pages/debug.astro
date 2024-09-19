@@ -19,15 +19,14 @@ import StyleTest from "../windows/debug/styleTest.astro";
 ---
 
 <Base
-  title="^-^ Jens lil ditch"
+  title="DEBUG^-^ Jens lil ditch"
   favicon={import.meta.env.BASE_URL + "favicon.svg"}
 >
   <Fragment slot="head">
     <script>
-      console.log(`Hey there snooper! welcome to the codebase! this is written using astro, svelte, react, and nanostores, so lots of logic wont work if u copy paste it!
-This code is freely avaliable at: 
-https://github.com/afterlifepro/neocities 
-Feel free to snoop! theres more info in the readme :3`);
+      console.log(
+        `this is for debugging things - all debug apps are avaliable via shortcuts here`
+      );
 
       import settings from "../settings";
 
@@ -37,7 +36,7 @@ Feel free to snoop! theres more info in the readme :3`);
         root.style.setProperty("--scale", settings.scale.toString());
         root.style.setProperty(
           "--scale-str",
-          `"${(Math.floor(settings.scale * 100)).toString()}%"`
+          `"${(settings.scale * 100).toString()}%"`
         );
         root.style.setProperty(
           "--fonts",
@@ -68,24 +67,20 @@ Feel free to snoop! theres more info in the readme :3`);
     </style>
 
     <TaskManager />
-    
+
     <StyleTest />
 
-    <NewAppTemplate client:load title="Windows 95" id="win95">
-      <img
-        src="https://lowendmac.com/win/95/win-95-1024.png"
-        alt="Windows 95 screenshot"
-      />
-    </NewAppTemplate>
-    <License />
     <NewAppTemplate client:load title="Settings" id="settings">
       <Settings client:load />
     </NewAppTemplate>
+
     <NewAppTemplate
       client:load
       title="Really really long super duper long title it never seems to end dude whats up"
-      id="long">Long</NewAppTemplate
+      id="long"
     >
+      Long
+    </NewAppTemplate>
   </Fragment>
   <div class="windows">
     <Shortcut
@@ -98,18 +93,6 @@ Feel free to snoop! theres more info in the readme :3`);
       client:load
       name="Test"
       href="styles"
-      icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
-    />
-    <Shortcut
-      client:load
-      name="Ref"
-      href="win95"
-      icon="https://lowendmac.com/win/95/win-95-1024.png"
-    />
-    <Shortcut
-      client:load
-      name="License"
-      href="license"
       icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
     />
     <Shortcut

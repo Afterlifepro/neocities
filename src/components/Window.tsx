@@ -8,9 +8,60 @@ import {
 import { apps } from "../store";
 import "./Window.scoped.css";
 
-// function Goobers({ length }: { length: number }) {}
+import goobersdef from "./goobersdef";
 
-function Cap({ title, id, moveRef, icon }:{ title:string, id:number, moveRef: any, icon:string }) {
+function Goobers({ length }: { length: number }) {
+  const [goobers, setGoobers] = useState<JSX.Element[]>([]);
+  useEffect(() => {
+    setGoobers([]);
+    for (let i = 0; i < length; i++) {
+      if (Math.random() < 0.5) {
+        setGoobers((old) => [...old, <div className="goober clear" key={i} />]);
+        continue;
+      }
+      const gooberIndex = Math.floor(Math.random() * goobersdef.length);
+      const gooberFileIndex = Math.floor(
+        Math.random() * goobersdef[gooberIndex].files.length
+      );
+      const gooberFile = goobersdef[gooberIndex].files[gooberFileIndex];
+      const gooberTag = goobersdef[gooberIndex].tags;
+      const rng = Math.random() < 0.5;
+
+      const gooberTagsParsed = [
+        ...gooberTag.map((tag) => {
+          if (tag === "flip") {
+            return rng ? "flip" : "";
+          } else {
+            return tag;
+          }
+        }),
+        gooberFile.height > 8 ? "big" : "",
+      ];
+      setGoobers((results) => [
+        ...results,
+        <img
+          src={gooberFile.src}
+          alt=""
+          className={"goober " + gooberTagsParsed.join(" ")}
+          key={i}
+        />,
+      ]);
+    }
+  }, [length]);
+  return <div className="goobers-container">{goobers}</div>;
+}
+
+function Cap({
+  title,
+  id,
+  moveRef,
+  icon,
+}: {
+  title: string;
+  id: number;
+  moveRef: any;
+  icon: string;
+}) {
   return (
     <div ref={moveRef} className="cap">
       {icon ? <img src={icon} /> : null}
@@ -62,9 +113,9 @@ export default function Window({
   const dragging = useRef(false);
 
   // when clicked make it drag
-  const onMouseDown = useCallback((e: { offsetX: any; offsetY: any; }) => {
+  const onMouseDown = useCallback((e: { offsetX: any; offsetY: any }) => {
     dragging.current = true;
-    apps.focusApp(id)
+    apps.focusApp(id);
     origin.current = { x: e.offsetX, y: e.offsetY };
   }, []);
 
@@ -72,7 +123,7 @@ export default function Window({
   const onMouseUp = useCallback(() => (dragging.current = false), []);
 
   // when you move the mouse update the coords if its being dragged
-  const onMouseMove = useCallback((e: { clientX: number; clientY: number; }) => {
+  const onMouseMove = useCallback((e: { clientX: number; clientY: number }) => {
     if (dragging.current) {
       setPosX(e.clientX - origin.current.x); // - origin.current.x);
       setPosY(e.clientY - origin.current.y); // - origin.current.y);
@@ -114,6 +165,7 @@ export default function Window({
       }
       onMouseDown={() => apps.focusApp(id)}
     >
+      <Goobers length={Math.ceil(width / 75)} />
       <Cap moveRef={draggableRef} title={title} id={id} icon={icon} />
       <div className="winContent">{content}</div>
     </div>
