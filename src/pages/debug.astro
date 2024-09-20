@@ -16,6 +16,7 @@ import Shortcut from "../components/Shortcut.svelte";
 
 import License from "../windows/license.astro";
 import StyleTest from "../windows/debug/styleTest.astro";
+import Appman from "../windows/debug/appman.astro";
 ---
 
 <Base
@@ -68,6 +69,8 @@ import StyleTest from "../windows/debug/styleTest.astro";
 
     <TaskManager />
 
+    <Appman />
+
     <StyleTest />
 
     <NewAppTemplate client:load title="Settings" id="settings">
@@ -105,6 +108,12 @@ import StyleTest from "../windows/debug/styleTest.astro";
       client:load
       name="Long"
       href="long"
+      icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
+    />
+    <Shortcut
+      client:load
+      name="App Manager"
+      href="appman"
       icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
     />
     <Render client:load />

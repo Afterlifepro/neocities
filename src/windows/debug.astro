@@ -1,0 +1,37 @@
+---
+import Shortcut from "../components/Shortcut.svelte";
+import NewAppTemplate from "../components/template";
+---
+
+<NewAppTemplate client:load title="debug" id="debug" width={90}>
+  <Shortcut
+    client:load
+    name="Debug"
+    href="taskman"
+    icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
+  />
+  <Shortcut
+    client:load
+    name="Test"
+    href="styles"
+    icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
+  />
+  <Shortcut
+    client:load
+    name="Settings"
+    href="settings"
+    icon="https://images.freeimages.com/images/large-previews/0a8/cog-1521245.jpg"
+  />
+  <Shortcut
+    client:load
+    name="Long"
+    href="long"
+    icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
+  />
+  <Shortcut
+    client:load
+    name="App Manager"
+    href="appman"
+    icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
+  />
+</NewAppTemplate>

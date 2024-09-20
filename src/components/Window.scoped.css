@@ -41,7 +41,7 @@
     }
   }
   & .winContent {
-    max-height: calc(var(--max-height, 20rem) - 2.2rem);
+    max-height: calc(var(--max-height, 20rem) - 3rem);
     overflow: auto;
     padding: 0.5rem;
   }

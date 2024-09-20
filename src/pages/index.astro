@@ -16,6 +16,9 @@ import Shortcut from "../components/Shortcut.svelte";
 
 import License from "../windows/license.astro";
 import StyleTest from "../windows/debug/styleTest.astro";
+import OtherSites from "../windows/otherSites.astro";
+import Appman from "../windows/debug/appman.astro";
+import Debug from "../windows/debug.astro";
 ---
 
 <Base
@@ -37,7 +40,7 @@ Feel free to snoop! theres more info in the readme :3`);
         root.style.setProperty("--scale", settings.scale.toString());
         root.style.setProperty(
           "--scale-str",
-          `"${(Math.floor(settings.scale * 100)).toString()}%"`
+          `"${Math.floor(settings.scale * 100).toString()}%"`
         );
         root.style.setProperty(
           "--fonts",
@@ -60,7 +63,7 @@ Feel free to snoop! theres more info in the readme :3`);
           position: relative;
           display: grid;
           grid-template-columns: repeat(auto-fit, 8rem);
-          grid-template-rows: repeat(auto-fit, 10rem);
+          grid-template-rows: repeat(auto-fit, minmax(10rem, min-content));
           grid-auto-flow: column;
           background: var(--desktop-bg);
         }
@@ -68,7 +71,9 @@ Feel free to snoop! theres more info in the readme :3`);
     </style>
 
     <TaskManager />
-    
+
+    <Appman />
+
     <StyleTest />
 
     <NewAppTemplate client:load title="Windows 95" id="win95">
@@ -84,27 +89,21 @@ Feel free to snoop! theres more info in the readme :3`);
     <NewAppTemplate
       client:load
       title="Really really long super duper long title it never seems to end dude whats up"
-      id="long">Long</NewAppTemplate
+      id="long"
     >
+      Long
+    </NewAppTemplate>
+    
+    <OtherSites />
+
+    <Debug />
   </Fragment>
   <div class="windows">
     <Shortcut
       client:load
       name="Debug"
-      href="taskman"
+      href="debug"
       icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
-    />
-    <Shortcut
-      client:load
-      name="Test"
-      href="styles"
-      icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
-    />
-    <Shortcut
-      client:load
-      name="Ref"
-      href="win95"
-      icon="https://lowendmac.com/win/95/win-95-1024.png"
     />
     <Shortcut
       client:load
@@ -120,10 +119,11 @@ Feel free to snoop! theres more info in the readme :3`);
     />
     <Shortcut
       client:load
-      name="Long"
-      href="long"
+      name="Other Sites"
+      href="otherSites"
       icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
-    />
+    />    
+    
     <Render client:load />
   </div>
   <Taskbar client:load />

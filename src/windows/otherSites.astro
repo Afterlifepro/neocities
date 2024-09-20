@@ -1,0 +1,71 @@
+---
+import NewAppTemplate from "../components/template";
+
+const buttons = [
+  {
+    name: "Kerka",
+    src: "https://kerka.neocities.org/buttons/kerka%20button.gif",
+    site: "https://kerka.neocities.org",
+  },
+
+  {
+    name: "Sava28",
+    src: "https://sava28.neocities.org/images/sava28.gif",
+    site: "https://sava28.neocities.org/",
+  },
+
+  {
+    name: "Jellifysh",
+    src: "https://static.wikia.nocookie.net/hermitcraft/images/2/25/EthosLab-face.png",
+    site: "https://jellifysh.neocities.org/",
+  },
+
+  {
+    name: "The Stupid Site",
+    src: "data:image/gif;base64,R0lGODdhWAAfANUAAAAAAAYBCAoDDQ4EEhAEFRUFGxgGHxoHIS4HPh4IJx8IKCMKLiYKMSkLNTcLSi0MOzANPjoNTDUOREEOVj0QTz4QUEIRVUYSW0gTXU0UY1QUblAVZ1kWc1cXcV4XelwYdl4ZemIZfmYbhGgbhmwdjHIek3YgmXshn////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAACkALAAAAABYAB8AAAb/QIcDQUScjqdJkThCapYIDXIEnSBPUCNSuWwen0vpkbq0IpdChEPDFh89bXYJKYprRMiS3XO1u09wcXNHdXF4R3pxfE5tQ0RXkJGSk5SVlpeXS5ibnJ2elJqfoqOkkERspamqnKirrq+UISGwtK+yERG1uqm4j7u/n6HAnyYmsMJ5JCXKpSQklyWDRyQVFdDSzqBFkCIUDxsPh6IfDxeWIxTiJw8CDOfpR+Tmk0QX80gSAgsLAM+bHRpATEswwIKlfP5OkBDwQGAkgAIRKiRocJK9bF8wCCgAQgABSBow/EGS4UCBBSIwSAAgwZ/IE3cwYJgl4cGVDA3UkTS5gERN/xMqWT4LIVOaQmcJLQgAUEDEAQYXKES7cKBBgVmISFgo8ICAABELAgB4oCHdxhBVFxhAGQFPNwoJMlxhtrWrAA1tTYQda6LDAnb3jtpDsgEAAwskrA4AgFdAA3YcSsiqAIGdBQkWTDQAQIEqABEFAHBocEDDAAEWBoxIfOAAgCYkQoCAYA4Casypm2zurKE1hQASrtjzdcIBgA9HCOwDcAGAgAoLFHzQsCDCggIXEixo0OS0iRIADpxwXcJBAw0CJPAjkYE5hs8n1FM4YEFE9u0j1p/wfoKfBAkFVHSEMAcEUIIJF3DEzwcDEHDBdRdkwEAGHTBwgFqMjWDYCRyEp/+heCZREEEIHp0AAUsrSWACBA100AEJEVxoAGMlauhOfwBU8MAANw64zQngBRCCCAJAYIJHJVgQADsJfECCCMZE4Fw7IrR3QAkfBLBkARmQEJ4ITwJAAIzO8TOACSKII6UA7WggJnvhzWHadQVdEUoJC9wlIQgmUCBXCRQE+oExdAQKzwcEEDBVoHc8EEBFTn311gedRfJWOpGKgKiiJ5iQQaAZGEUELkiAgIFkOnmSgVyQfFCABOJ0gAGhnchqzKqX4CLLMEiQoEFCvF6xa7DEXtJKscgyQlyyyCLDLLHOPstrEWu0cUUgbUhTSBviJNLGIl/Yca0d2trR7R59NII2ABc/HsEuE05A4QYZRZjhIzLvIuAFTPJOUYWdZeR7Rb77glHEvP+eAcXAUBTc7xgJ30vEBEEAADs=",
+    site: "https://stupidsketchbook.neocities.org/idk",
+  },
+
+  {
+    name: "Gify pet",
+    src: "https://gifypet.neocities.org/images/badge.gif",
+    site: "https://gifypet.neocities.org/",
+  },
+  {
+    name: "Venuvenom",
+    src: "https://venuvenom.neocities.org/images/webbutton1.gif",
+    site: "https://venuvenom.neocities.org/",
+  },
+  {
+    name: "Wikipedia",
+    src: "https://upload.wikimedia.org/wikipedia/commons/a/aa/Wikipedia-button_88x31.png?20070531122019",
+    site: "https://en.wikipedia.org/wiki/User:Afterlifepro",
+  },
+];
+---
+
+<NewAppTemplate client:load title="Other Sites!!" id="otherSites" width={104}>
+  <div>
+    {
+      buttons.map((button) => (
+        <a href={button.site} target="_blank">
+          <img src={button.src} alt={button.name} />
+        </a>
+      ))
+    }
+  </div></NewAppTemplate
+>
+
+<style>
+  div {
+    display: flex;
+    flex-direction: column;
+    & img {
+      width: 8.8rem;
+      min-height: 3.1rem;
+      border: 0.2rem solid;
+      border-color: var(--border-intrude);
+      margin: 0.2rem;
+    }
+  }
+</style>

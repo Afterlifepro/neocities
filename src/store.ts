@@ -39,7 +39,7 @@ export const openApps = deepMap<{
   apps: {},
 });
 
-const templateApps = deepMap<{ [key: string]: template }>({});
+export const templateApps = deepMap<{ [key: string]: template }>({});
 
 /**
  * contains all functions for managing apps!
