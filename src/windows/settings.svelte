@@ -15,7 +15,7 @@
 </script>
 
 <form>
-  <label for="scale">Scale</label><input
+  <input
     id="scale"
     name="scale"
     type="range"
@@ -25,7 +25,8 @@
     value={settings.scale}
     on:change={scale}
   />
-  <label for="pixel">Pixel Fonts</label><input
+  <label for="scale">Scale</label>
+  <input
     id="pixel"
     name="pixel"
     type="checkbox"
@@ -33,20 +34,22 @@
     on:change={font}
     data-toggle
   />
+  <label for="pixel">Pixel Fonts</label>
 </form>
 
 <style>
   form {
     display: grid;
-    grid-template-columns: max-content minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) max-content;
     grid-auto-rows: max-content;
     width: 100%;
     height: 100%;
     & label {
-      padding-right: 0.4rem;
+      padding-left: 0.4rem;
     }
     & input {
       max-width: 100%;
+      margin-inline: auto;
     }
   }
 

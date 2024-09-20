@@ -81,7 +81,7 @@ function Cap({
   return (
     <div ref={moveRef} className="cap">
       {icon ? <img src={icon} /> : null}
-      <div>{title}</div>
+      <div tabIndex={-1}>{title}</div>
       <button
         onClick={() => {
           apps.closeApp(id);
