@@ -10,12 +10,12 @@ import "./Window.scoped.css";
 
 import goobersdef from "./goobersdef";
 
-function Goobers({ length }: { length: number }) {
+function Goobers({ columns }: { columns: number }) {
   const [goobers, setGoobers] = useState<JSX.Element[]>([]);
   useEffect(() => {
     setGoobers([]);
-    for (let i = 0; i < length; i++) {
-      if (Math.random() < 0.5) {
+    for (let i = 0; i < columns; i++) {
+      if (Math.random() < 0.65) {
         setGoobers((old) => [...old, <div className="goober clear" key={i} />]);
         continue;
       }
@@ -35,20 +35,36 @@ function Goobers({ length }: { length: number }) {
             return tag;
           }
         }),
-        gooberFile.height > 8 ? "big" : "",
       ];
-      setGoobers((results) => [
-        ...results,
-        <img
-          src={gooberFile.src}
-          alt=""
-          className={"goober " + gooberTagsParsed.join(" ")}
-          key={i}
-        />,
-      ]);
+
+      const gooberWidth = Math.ceil(gooberFile.width / 8);
+      const gooberHeight = Math.ceil(gooberFile.height / 8);
+
+      i += gooberWidth - 1;
+      if (i < columns)
+        setGoobers((results) => [
+          ...results,
+          <img
+            src={gooberFile.src}
+            alt=""
+            className={"goober " + gooberTagsParsed.join(" ")}
+            style={{
+              gridColumn: `span ${gooberWidth}`,
+              aspectRatio: `${gooberWidth}/${gooberHeight}`,
+            }}
+            key={i}
+          />,
+        ]);
     }
-  }, [length]);
-  return <div className="goobers-container">{goobers}</div>;
+  }, [columns]);
+  return (
+    <div
+      className="goobers-container"
+      style={{ "--col": columns } as CSSProperties & { "--col": number }}
+    >
+      {goobers}
+    </div>
+  );
 }
 
 function Cap({
@@ -165,7 +181,7 @@ export default function Window({
       }
       onMouseDown={() => apps.focusApp(id)}
     >
-      <Goobers length={Math.ceil(width / 75)} />
+      <Goobers columns={Math.floor((width - 10) / 32)} /> {/* 32 is the goober width and height, and 10px is the padding total */}
       <Cap moveRef={draggableRef} title={title} id={id} icon={icon} />
       <div className="winContent">{content}</div>
     </div>
