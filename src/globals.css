@@ -9,7 +9,10 @@
 * PALLETE *
 **********/
 :root {
-  font-size: calc(10px * var(--scale, 1));
+  /* use 62.5% to make the base size 10px
+  default font size (and em) are at 16px for everything unless otherwise specified
+  this just makes the sizing easier while still respecting user set font sizes */
+  font-size: calc(62.5% * var(--scale, 1));
   font-family: var(--fonts, "W95FA", sans-serif);
 
   --desktop-bg: #008282;
@@ -25,7 +28,7 @@
 *::before,
 *::after {
   font: inherit;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -184,32 +187,32 @@ button {
 h1 {
   margin: 0.75rem 0.25rem;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
 }
 h2 {
   margin: 0.35rem 0.15rem;
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 2.4rem;
 }
 h3 {
   margin: 0.1rem;
   font-style: oblique;
-  font-size: 1.4rem;
+  font-size: 2.1rem;
 }
 h4 {
   margin: 0.1rem;
-  font-size: 1.2rem;
+  font-size: 1.9rem;
 }
 h5 {
   margin: 0.1rem;
-  font-size: 1rem;
+  font-size: 1.7rem;
   font-style: italic;
   font-weight: bold;
 }
 h6 {
   margin: 0.1rem;
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   font-weight: lighter;
 }
 
