@@ -1,72 +1,14 @@
 ---
-import Base from "../layouts/base.astro";
-
-import "../globals.css";
-
-import Render from "../components/renderer.tsx";
-import Taskbar from "../components/taskbar.tsx";
-
+import Ninefive from "../layouts/ninefive.astro";
 
 import DebugShortcuts from "../shortcuts/debug.shortcuts.astro";
-
-import Templates from "../templates.astro";
 ---
 
-<Base
-  title="DEBUG^-^ Jens lil ditch"
-  favicon={import.meta.env.BASE_URL + "favicon.svg"}
+<Ninefive
+  title="debug"
+  snooper={`this is for debugging things
+all debug apps are avaliable via shortcuts here
+have fun!`}
 >
-  <Fragment slot="head">
-    <script>
-      console.log(
-        `this is for debugging things - all debug apps are avaliable via shortcuts here`
-      );
-
-      import settings from "../settings";
-
-      const root: HTMLElement = document.documentElement;
-
-      settings.value.subscribe((settings) => {
-        root.style.setProperty("--scale", settings.scale.toString());
-        root.style.setProperty(
-          "--scale-str",
-          `"${(settings.scale * 100).toString()}%"`
-        );
-        root.style.setProperty(
-          "--fonts",
-          settings.pixel ? "W95FA, sans-serif" : "sans-serif"
-        );
-      });
-    </script>
-
-    <style>
-      body {
-        margin: 0;
-        width: 100dvw;
-        height: 100dvh;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 3rem;
-
-        .windows {
-          overflow: clip;
-          position: relative;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, 8rem);
-          grid-template-rows: repeat(auto-fit, 10rem);
-          grid-auto-flow: column;
-          background: var(--desktop-bg);
-        }
-      }
-    </style>
-
-    <Templates />
-  </Fragment>
-  <div class="windows">
-    
-    <DebugShortcuts />
-
-    <Render client:load />
-  </div>
-  <Taskbar client:load />
-</Base>
+  <DebugShortcuts />
+</Ninefive>
