@@ -3,6 +3,7 @@ import "../globals.css";
 
 import Render from "../components/renderer.tsx";
 import Taskbar from "../components/taskbar.tsx";
+import Templates from "../templates.astro";
 
 const { title, snooper } = Astro.props;
 ---
@@ -52,6 +53,9 @@ const { title, snooper } = Astro.props;
           }
         }
       </style>
+
+      <Templates />
+
   </head>
   <body>
     <div class="windows">

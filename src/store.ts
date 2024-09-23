@@ -139,11 +139,21 @@ export const apps = {
    */
   getTemplate(template: string) {
     log("retriving template", "slateblue", template);
-    if (!(template in templateApps.get()))
+    // if the template doesnt exist
+    if (!(template in templateApps.get())) {
+      // inform the console
+      log("template not found", "tomato", template, console.warn);
+      // check if there are any templates
+      if (Object.keys(templateApps.get()).length === 0)
+        log("no templates defined", "tomato", console.warn);
+      // return an error app
       return {
         title: "404",
         content: `the app ${template} doesnt seem to exist. please let me know if u think this shouldnt be happening!`,
       };
+    }
+
+    // the template exists: return that
     return templateApps.get()[template];
   },
 };
