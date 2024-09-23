@@ -254,11 +254,6 @@ input {
         outline: 0.2rem solid var(--accent-focus);
       }
     }
-
-    & + label {
-      position: relative;
-      top: -0.6rem;
-    }
   }
 }
 progress {

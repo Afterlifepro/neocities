@@ -21,7 +21,7 @@
     type="range"
     min="0.5"
     max="3"
-    step="0.1"
+    step="0.5"
     value={settings.scale}
     on:change={scale}
   />
@@ -44,6 +44,9 @@
     grid-auto-rows: max-content;
     width: 100%;
     height: 100%;
+    justify-content: center;
+    align-items: center;
+
     & label {
       padding-left: 0.4rem;
     }

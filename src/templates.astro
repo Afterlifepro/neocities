@@ -5,8 +5,8 @@ import Appman from "./windows/debug/appman.astro";
 import StyleTest from "./windows/debug/styleTest.astro";
 import Taskman from "./windows/debug/taskman.astro";
 import License from "./windows/license.astro";
-// import OtherSites from "./windows/otherSites.astro";
-// import Share from "./windows/share.astro";
+import OtherSites from "./windows/otherSites.astro";
+import Share from "./windows/share.astro";
 import DebugShortcuts from "./shortcuts/debug.shortcuts.astro";
 ---
 
@@ -37,10 +37,10 @@ import DebugShortcuts from "./shortcuts/debug.shortcuts.astro";
   Long
 </NewAppTemplate>
 
-<!-- <OtherSites /> -->
+<OtherSites />
 
 <NewAppTemplate client:load title="debug" id="debug" width={90}>
   <DebugShortcuts />
 </NewAppTemplate>
 
-<!-- <Share /> -->
+<Share />

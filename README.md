@@ -7,7 +7,8 @@ the readme below is the pregenerated astro one btw
 All code found in this repository is licensed under [GNU GPL v3](COPYING).  
 All assets located in `/src/assets/oc/` are licensed under [UK copyright law](https://www.gov.uk/copyright).  
 All assets located in `/src/assets/not-oc/` are separated into subfolders and licensed based on a license file in that folder Attribution is also provided to the original author.  
-I may not have legal rights over assets stored externally, such as via file hosts or hotlinks. Please see the original creators license for the asset. 
+I may not have legal rights over assets stored externally, such as via file hosts or hotlinks. Please see the original creators license for the asset.  
+Assets stored under `/public` should be considered as if they were stored under `/src/assets/oc` unless a license is located elsewhere in the project.
 
 
 # Installation

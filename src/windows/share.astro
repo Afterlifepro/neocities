@@ -1,0 +1,103 @@
+---
+import App from "../components/App.svelte";
+import NewAppTemplate from "../components/template";
+---
+
+<NewAppTemplate client:load title="Share" id="share" width={104}>
+  <img src="/88x31/anim.gif" alt="" />
+  <App
+    client:load
+    app={{
+      source: "share",
+      template: "share/query",
+    }}
+    props={{
+      style: "display: contents; cursor: pointer;",
+    }}
+  >
+    <img
+      src="/88x31/anim-share.gif"
+      alt=""
+    />
+  </App>
+
+  <style>
+    img {
+      width: 8.8rem;
+      height: 3.1rem;
+      border: 0.2rem solid;
+      border-color: var(--border-intrude);
+      margin: 0.2rem;
+    }
+  </style>
+</NewAppTemplate>
+
+<NewAppTemplate client:load title="Share" id="share/query" width={104}>
+  <button
+    onclick={`
+const text = \`<a href="https://afterlifepro.neocities.org/"><img src="${import.meta.env.SITE}/88x31/anim.gif" width="88px"/></a>\`;
+navigator.clipboard.writeText(text).then(
+  () => {
+    // success
+    alert("Copied the code to clipboard! Paste it into your site!!");
+    alert(text);
+    console.log("Copied the code to clipboard! Paste it into your site!!");
+    console.log(text);
+  },
+  () => {
+    // failure
+    alert("Failed to copy text. Copy paste the following code:");
+    alert(text);
+    console.log("Failed to copy text. Copy paste the following code:");
+    console.log(text);
+  }
+);`}
+  >
+    <div>Animated</div>
+    <img
+      src="/88x31/anim-share.gif"
+      alt=""
+    />
+  </button>
+  <button
+    onclick={`
+const text = \`<a href="https://afterlifepro.neocities.org/"><img src="${import.meta.env.SITE}/88x31/static.png" width="88px"/></a>\`;
+navigator.clipboard.writeText(text).then(
+  () => {
+    // success
+    alert("Copied the code to clipboard! Paste it into your site!!");
+    alert(text);
+    console.log("Copied the code to clipboard! Paste it into your site!!");
+    console.log(text);
+  },
+  () => {
+    // failure
+    alert("Failed to copy text. Copy paste the following code:");
+    alert(text);
+    console.log("Failed to copy text. Copy paste the following code:");
+    console.log(text);
+  }
+);`}
+  >
+    <div>Static</div>
+    <img
+      src="/88x31/static-share.png"
+      alt=""
+    />
+  </button>
+  <style>
+    button {
+      padding: 0;
+      cursor: pointer;
+      & img {
+        margin: 0;
+        border: 0 solid black;
+        border-top-width: 0.2rem;
+      }
+    }
+
+    img {
+      image-rendering: pixelated;
+    }
+  </style>
+</NewAppTemplate>

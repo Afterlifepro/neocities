@@ -25,3 +25,9 @@ pnpm-debug.log*
 
 #vscode 
 .vscode/*
+src/windows/port/OtherSites.js
+src/windows/port/RSS.js
+src/windows/port/Settings.js
+src/windows/port/Shrines.js
+src/windows/port/standardPages.js
+src/windows/port/Welcome.js
