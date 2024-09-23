@@ -9,9 +9,7 @@ export default function AppManager() {
 
   useEffect(() => {
     setResult([]);
-    console.log($templateApps);
     for (const [i, app] of Object.entries($templateApps)) {
-      console.log(i, app)
       setResult((results) => [
         ...results,
         <tr key={i}>

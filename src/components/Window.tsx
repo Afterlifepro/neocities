@@ -82,7 +82,7 @@ function Cap({
     <div ref={moveRef} className="cap">
       {icon ? <img src={icon} /> : null}
       {/* @ts-expect-error */}
-      <div inert>{title}</div>
+      <div inert="true">{title}</div>
       <button
         onClick={() => {
           apps.closeApp(id);

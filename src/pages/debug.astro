@@ -3,20 +3,13 @@ import Base from "../layouts/base.astro";
 
 import "../globals.css";
 
-import NewAppTemplate from "../components/template.tsx";
 import Render from "../components/renderer.tsx";
 import Taskbar from "../components/taskbar.tsx";
 
-import TaskManager from "../windows/debug/taskman.astro";
-import Settings from "../windows/settings.svelte";
 
-import App from "../components/App.svelte";
-import Counter from "../windows/counter.svelte";
-import Shortcut from "../components/Shortcut.svelte";
+import DebugShortcuts from "../shortcuts/debug.shortcuts.astro";
 
-import License from "../windows/license.astro";
-import StyleTest from "../windows/debug/styleTest.astro";
-import Appman from "../windows/debug/appman.astro";
+import Templates from "../templates.astro";
 ---
 
 <Base
@@ -67,55 +60,12 @@ import Appman from "../windows/debug/appman.astro";
       }
     </style>
 
-    <TaskManager />
-
-    <Appman />
-
-    <StyleTest />
-
-    <NewAppTemplate client:load title="Settings" id="settings">
-      <Settings client:load />
-    </NewAppTemplate>
-
-    <NewAppTemplate
-      client:load
-      title="Really really long super duper long title it never seems to end dude whats up"
-      id="long"
-    >
-      Long
-    </NewAppTemplate>
+    <Templates />
   </Fragment>
   <div class="windows">
-    <Shortcut
-      client:load
-      name="Debug"
-      href="taskman"
-      icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
-    />
-    <Shortcut
-      client:load
-      name="Test"
-      href="styles"
-      icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
-    />
-    <Shortcut
-      client:load
-      name="Settings"
-      href="settings"
-      icon="https://images.freeimages.com/images/large-previews/0a8/cog-1521245.jpg"
-    />
-    <Shortcut
-      client:load
-      name="Long"
-      href="long"
-      icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
-    />
-    <Shortcut
-      client:load
-      name="App Manager"
-      href="appman"
-      icon="https://i.ebayimg.com/images/g/Z3cAAOSwtchmwzCx/s-l140.jpg"
-    />
+    
+    <DebugShortcuts />
+
     <Render client:load />
   </div>
   <Taskbar client:load />

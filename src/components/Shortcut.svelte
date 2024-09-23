@@ -1,4 +1,5 @@
 <script lang="ts">
+  import log from "../logs";
   import { apps } from "../store";
 
   export let icon: string = "";
@@ -11,9 +12,13 @@
   class="shortcut"
   on:click={!external
     ? () => {
+      log("using Shortcut.svelte", "darkslategray");
+
         apps.newApp = { template: href, source: "shortcut" };
       }
     : () => {
+      log("using App.svelte", "hotpink", "redirect to", href);
+
         window.open(href);
       }}
 >

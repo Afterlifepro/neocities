@@ -1,4 +1,5 @@
 import { deepMap } from "nanostores";
+import log from "./logs";
 
 /**
  * type for an app. this is used when an app is created
@@ -27,7 +28,7 @@ type template = Omit<appTemplate, "key">;
 /**
  * types used when making a new app
  */
-export type newApp = (appTemplate | { template: string }) & { source: string };
+export type newApp = (template | { template: string }) & { source: string };
 
 export const openApps = deepMap<{
   latestIndex: number;
@@ -54,6 +55,7 @@ export const apps = {
    * Create a new app from a template or from a custom value
    */
   set newApp(app: newApp) {
+    log("creating new app", "purple", app.source);
     // app defaults
     let result: app = {
       index: this.newIndex,
@@ -78,6 +80,7 @@ export const apps = {
    * @param id id of the app to close
    */
   closeApp(id: number) {
+    log("closing", "red", openApps.get().apps[id].title);
     const newApps = Object.keys(openApps.get().apps).reduce((acc, key) => {
       if (parseInt(key) !== id) {
         acc[key] = openApps.get().apps[key];
@@ -106,6 +109,7 @@ export const apps = {
    * @param id id of the app to focus
    */
   focusApp(id: number) {
+    log(`focusing app ${id}`, "#008282", openApps.get().apps[id].title);
     openApps.setKey(`apps.${id}`, {
       ...openApps.get().apps[id],
       layer: this.newLayer,
@@ -120,6 +124,7 @@ export const apps = {
    * Create a new template app
    */
   set newTemplate(template: appTemplate) {
+    log("creating new template", "green", template.title);
     templateApps.setKey(`${template.key}`, {
       title: template.title,
       content: template.content,
@@ -133,6 +138,7 @@ export const apps = {
    * get a template from its name. returns an error app if it isnt found
    */
   getTemplate(template: string) {
+    log("retriving template", "slateblue", template);
     if (!(template in templateApps.get()))
       return {
         title: "404",

@@ -3,6 +3,7 @@ import { useStore } from "@nanostores/react";
 import { useEffect, useState, type ReactElement } from "react";
 
 import "./taskbar.scoped.css";
+import log from "../logs";
 
 function App(app: Omit<app, "content" | "layer">) {
   return (
@@ -23,6 +24,7 @@ export default function Taskbar() {
   const [result, setResult] = useState<ReactElement[]>([]);
 
   useEffect(() => {
+    log("rerendering taskbar", "darkgoldenrod");
     setResult([]);
     for (const [i, app] of Object.entries($openApps.apps)) {
       setResult((results) => [

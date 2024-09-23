@@ -2,6 +2,7 @@ import { openApps } from "../store";
 import { useStore } from "@nanostores/react";
 import Window from "./Window";
 import { useEffect, useState } from "react";
+import log from "../logs";
 
 export default function Render() {
   const $openApps = useStore(openApps);
@@ -9,6 +10,7 @@ export default function Render() {
   const [result, setResult] = useState([]);
 
   useEffect(() => {
+    log("rerendering windows", "darkgoldenrod");
     setResult([]);
     for (const [i, app] of Object.entries($openApps.apps)) {
       setResult((results) => [

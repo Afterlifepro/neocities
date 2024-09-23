@@ -1,4 +1,5 @@
 <script lang="ts">
+  import log from "../logs";
   import { apps, type newApp } from "../store";
 
   export let app:newApp;
@@ -12,6 +13,7 @@ the props prop is passed straight to the button
 -->
 <button
   on:click={() => {
+    log("using App.svelte", "darkslategray");
     apps.newApp = app;
   }}
   {...props}
