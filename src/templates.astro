@@ -10,37 +10,41 @@ import Share from "./windows/share.astro";
 import DebugShortcuts from "./shortcuts/debug.shortcuts.astro";
 ---
 
-<Taskman />
+<div style="display:none" data-hwyla="templates">
+  <!-- this is where templates are stored -->
+   <!-- (hwyla means heres what youre looking at) -->
+  <Taskman />
 
-<Appman />
+  <Appman />
 
-<StyleTest />
+  <StyleTest />
 
-<NewAppTemplate client:load title="Windows 95" id="win95">
-  <img
-    src="https://lowendmac.com/win/95/win-95-1024.png"
-    alt="Windows 95 screenshot"
-  />
-</NewAppTemplate>
+  <NewAppTemplate client:load title="Windows 95" id="win95">
+    <img
+      src="https://lowendmac.com/win/95/win-95-1024.png"
+      alt="Windows 95 screenshot"
+    />
+  </NewAppTemplate>
 
-<License />
+  <License />
 
-<NewAppTemplate client:load title="Settings" id="settings">
-  <Settings client:load />
-</NewAppTemplate>
+  <NewAppTemplate client:load title="Settings" id="settings">
+    <Settings client:load />
+  </NewAppTemplate>
 
-<NewAppTemplate
-  client:load
-  title="Really really long super duper long title it never seems to end dude whats up"
-  id="long"
->
-  Long
-</NewAppTemplate>
+  <NewAppTemplate
+    client:load
+    title="Really really long super duper long title it never seems to end dude whats up"
+    id="long"
+  >
+    Long
+  </NewAppTemplate>
 
-<OtherSites />
+  <OtherSites />
 
-<NewAppTemplate client:load title="debug" id="debug" width={90}>
-  <DebugShortcuts />
-</NewAppTemplate>
+  <NewAppTemplate client:load title="debug" id="debug" width={90}>
+    <DebugShortcuts />
+  </NewAppTemplate>
 
-<Share />
+  <Share />
+</div>
