@@ -1,0 +1,75 @@
+<style>
+  p {
+    margin-block: 0.5rem;
+  }
+  .note {
+    font-size: 0.9em;
+    /* font-style: italic; */
+    background-color: #ffffff20;
+    margin-right: 0.5rem;
+    margin-left: 2rem;
+    padding: 0.25rem;
+    border: 0.2rem solid;
+    border-color: var(--border-extrude);
+  }
+</style>
+
+<h1>Welcome!!</h1>
+<p>
+  This is my 3rd itteration of this site! I recreated this on a whim after
+  finding out about Astro, and opted to use React and Svelte for interactivity!<br
+  />If that makes no sense to you, thats fair - this is basically word soup icl
+</p>
+<p>
+  This site is designed like windows 95 and the windows drag, so go check em out
+</p>
+<p>
+  Heres a list of features in i added or improved:
+  <ol>
+    <li>It works <b>on mobile</b>!!!</li>
+    <li>A debug page which makes accessing debug items much easier</li>
+    <li>
+      The UI can be scaled via settings, via browser zoom, or via a custom
+      default font size!
+      <div class="note">
+        (note that this site is designed on a 100% zoom, 100% scale, 16pt
+        default font size on a 24" 1920x1080 screen with a ~600x900 viewport
+        size (small viewport bc terminal, pip, and dev tools))
+      </div>
+    </li>
+    <li>Theres license information!</li>
+    <li>
+      Vibrant debug logs
+      <details class="note">
+        <summary>For Mobile Users:</summary>
+        If youre a mobile user and want to try look at the debug logs, heres a nifty
+        tool to add dev tools to your current page: <a
+          href="https://github.com/liriliri/eruda">Eruda</a
+        >
+        <br />
+        Note that I couldnt make it work with the instructions they provided, so
+        I made a userscript which runs it on every page! Click <button
+          onclick={`// ==UserScript==
+// @name         Eruda - Mobile devtools
+// @namespace    http://tampermonkey.net/
+// @version      2024-09-26
+// @description  Loads Eruda dev tools on every site
+// @author       Liriliri (Script created by afterlifepro)
+// @match        https://github.com/liriliri/eruda
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // Your code here...
+    javascript:(function () { var script = document.createElement('script'); script.src="https://cdn.jsdelivr.net/npm/eruda"; document.body.append(script); script.onload = function () { eruda.init(); } })(); // eslint-expect-error
+})();`}
+          class="link">here</button
+        > to copy the code so that you can paste it into a new script! (look up a
+        guide on how to make new scripts if you need to)
+      </details>
+    </li>
+    <li>Improved how new apps are created as a developer</li>
+    <li>More will come soon!!!!</li>
+  </ol>
+</p>

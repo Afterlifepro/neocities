@@ -8,11 +8,17 @@ import License from "./windows/license.astro";
 import OtherSites from "./windows/otherSites.astro";
 import Share from "./windows/share.astro";
 import DebugShortcuts from "./shortcuts/debug.shortcuts.astro";
+import Welcome from "./windows/welcome.astro";
 ---
 
 <div style="display:none" data-hwyla="templates">
   <!-- this is where templates are stored -->
    <!-- (hwyla means heres what youre looking at) -->
+
+  <NewAppTemplate client:load title="Welcome" id="welcome" width={300}>
+    <Welcome />
+  </NewAppTemplate>
+
   <Taskman />
 
   <Appman />
