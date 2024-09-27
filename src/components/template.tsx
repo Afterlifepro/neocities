@@ -20,17 +20,16 @@ export default function NewAppTemplate(props: {
     };
   }, []);
   return (
-    <>
-      <div
-        data-name="afterlifepro:windowTemplate"
-        data-id={props.id}
-        data-title={props.title}
-        data-icon={props.icon}
-        data-width={props.width}
-        data-max-height={props.maxHeight}
-      >
-        {props.children}
-      </div>
-    </>
+    <div
+      style={{ display: "none" }}
+      data-name="afterlifepro:windowTemplate"
+      data-id={props.id}
+      data-title={props.title}
+      data-icon={props.icon}
+      data-width={props.width}
+      data-max-height={props.maxHeight}
+    >
+      {props.children}
+    </div>
   );
 }
