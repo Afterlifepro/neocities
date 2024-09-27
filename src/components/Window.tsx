@@ -9,6 +9,7 @@ import { apps } from "../store";
 import "./Window.scoped.css";
 
 import goobersdef from "./goobersdef";
+import log from "../logs";
 
 function Goobers({ columns }: { columns: number }) {
   const [goobers, setGoobers] = useState<JSX.Element[]>([]);
@@ -36,6 +37,14 @@ function Goobers({ columns }: { columns: number }) {
           }
         }),
       ];
+
+      const lastElement = goobers[goobers.length - 1];
+      const lastElementSrc = lastElement?.props?.src;
+
+      if (lastElementSrc === gooberFile.src) {
+        log("last element is the same", "midnightblue", gooberFile.src);        setGoobers((old) => [...old, <div className="goober clear" key={i} />]);
+        continue;
+      }
 
       const gooberWidth = Math.ceil(gooberFile.width / 8);
       const gooberHeight = Math.ceil(gooberFile.height / 8);
@@ -182,7 +191,8 @@ export default function Window({
       }
       onMouseDown={() => apps.focusApp(id)}
     >
-      <Goobers columns={Math.floor((width - 10) / 32)} /> {/* 32 is the goober width and height, and 10px is the padding total */}
+      <Goobers columns={Math.floor((width - 10) / 32)} />{" "}
+      {/* 32 is the goober width and height, and 10px is the padding total */}
       <Cap moveRef={draggableRef} title={title} id={id} icon={icon} />
       <div className="winContent">{content}</div>
     </div>

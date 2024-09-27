@@ -10,20 +10,5 @@ import DebugShortcuts from "../shortcuts/debug.shortcuts.astro";
 all debug apps are avaliable via shortcuts here
 have fun!`}
 >
-  <div
-    style="display:flex; justify-content: center; align-items: center; text-align: center"
-  >
-    <div
-      style="width: fit-content; height: fit-content; background-color: #00000050; color: white; padding:0.5rem; margin: 0.5rem; font-size: 1rem;"
-    >
-      {
-        import.meta.env.DB_TARGET === "neocities"
-          ? "running on neocities"
-          : import.meta.env.DB_TARGET === "github"
-            ? "running on github"
-            : "unknown DB_TARGET : " + import.meta.env.DB_TARGET
-      }
-    </div>
-  </div>
   <DebugShortcuts />
 </Ninefive>

@@ -9,11 +9,12 @@ import OtherSites from "./windows/otherSites.astro";
 import Share from "./windows/share.astro";
 import DebugShortcuts from "./shortcuts/debug.shortcuts.astro";
 import Welcome from "./windows/welcome.astro";
+import KillAll from "./windows/debug/killAll";
 ---
 
 <div style="display:none" data-hwyla="templates">
   <!-- this is where templates are stored -->
-   <!-- (hwyla means heres what youre looking at) -->
+  <!-- (hwyla means heres what youre looking at) -->
 
   <NewAppTemplate client:load title="Welcome" id="welcome" width={300}>
     <Welcome />
@@ -22,6 +23,10 @@ import Welcome from "./windows/welcome.astro";
   <Taskman />
 
   <Appman />
+
+  <NewAppTemplate client:load title="Kill all" id="killall">
+    <KillAll client:load />
+  </NewAppTemplate>
 
   <StyleTest />
 
@@ -48,9 +53,31 @@ import Welcome from "./windows/welcome.astro";
 
   <OtherSites />
 
-  <NewAppTemplate client:load title="debug" id="debug" width={90}>
-    <DebugShortcuts />
+  <NewAppTemplate client:load title="debug" id="debug" width={180}>
+    <div class="debug-wrapper">
+      <div
+        style="display:flex; justify-content: center; align-items: center; text-align: center; height: 100%;"
+      >
+        <div
+          style="width: fit-content; height: fit-content; background-color: #00000050; color: white; padding:0.5rem; margin: 0.5rem; font-size: 1rem;"
+        >
+          <a href="/debug" style="color: inherit; font: inherit">Open Debug Page</a>
+        </div>
+      </div>
+      <DebugShortcuts />
+    </div>
   </NewAppTemplate>
 
   <Share />
 </div>
+
+<style>
+  .debug-wrapper {
+    display: grid;
+    grid-template-columns: 8rem 8rem;
+    grid-template-rows: repeat(auto-fit, minmax(10rem, min-content));
+    grid-auto-flow: row;
+    align-items: start;
+    justify-content: center;
+  }
+</style>
