@@ -13,6 +13,7 @@ const { title, snooper } = Astro.props;
   <head>
     <title>{title ? `^-^ Jens lil ditch - ${title}`: "^-^ Jens lil ditch!!"}</title>
     <link rel="icon" href={import.meta.env.BASE_URL + "favicon.svg"} />
+    <meta charset="utf-8">
     <script>
         console.log(document.documentElement.dataset.snooper); // snooper);
   

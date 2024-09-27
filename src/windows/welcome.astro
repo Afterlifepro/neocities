@@ -1,3 +1,7 @@
+---
+import Marquee from "../components/lib/marquee.svelte";
+---
+
 <style>
   p {
     margin-block: 0.5rem;
@@ -17,19 +21,52 @@
 <h1>Welcome!!</h1>
 <p>
   This is my 3rd itteration of this site! I recreated this on a whim after
-  finding out about Astro, and opted to use React and Svelte for interactivity!<br
-  />If that makes no sense to you, thats fair - this is basically word soup icl
+  finding out about Astro 🚀, and opted to use React ⚛️ and Svelte 🇸 (and Vite
+  ⚡ as it comes bundled with astro) for interactivity!<br />If that makes no
+  sense to you, thats fair - this is basically word soup icl
+</p>
+
+<div class="wrapper" style="--overflow: 0.5rem">
+  <Marquee
+    images={[
+      {
+        src: "/logos/astro.svg",
+        alt: "astro logo",
+        url: "https://astro.build",
+        accent: "#D83333",
+      },
+      {
+        src: "/logos/svelte.svg",
+        alt: "svelte logo",
+        url: "https://svelte.dev",
+        accent: "#FF3E00",
+      },
+      {
+        src: "/logos/react.svg",
+        alt: "react logo",
+        url: "https://reactjs.org",
+        accent: "#00D8FF",
+      },
+      {
+        src: "/logos/vite.svg",
+        alt: "vite logo",
+        url: "https://vitejs.dev",
+        accent: "#41D1FF",
+      },
+    ]}
+  />
+</div>
+<p>
+  This site is designed like windows 95 🪟 and the windows drag, so go check em
+  out!!
 </p>
 <p>
-  This site is designed like windows 95 and the windows drag, so go check em out
-</p>
-<p>
-  Heres a list of features in i added or improved:
+  Heres a list of features i added or improved:
   <ol>
-    <li>It works <b>on mobile</b>!!!</li>
-    <li>A debug page which makes accessing debug items much easier</li>
+    <li>It works <b>on mobile</b>!!! ☎️</li>
+    <li>A debug page which makes accessing debug 🪲 items much easier</li>
     <li>
-      The UI can be scaled via settings, via browser zoom, or via a custom
+      The UI can be scaled 🔍 via settings, via browser zoom, or via a custom
       default font size!
       <div class="note">
         (note that this site is designed on a 100% zoom, 100% scale, 16pt
@@ -37,7 +74,7 @@
         size (small viewport bc terminal, pip, and dev tools))
       </div>
     </li>
-    <li>Theres license information!</li>
+    <li>Theres license information! 📜</li>
     <li>
       Vibrant debug logs
       <details class="note">
@@ -69,7 +106,37 @@
         guide on how to make new scripts if you need to)
       </details>
     </li>
-    <li>Improved how new apps are created as a developer</li>
+    <li>Improved how new apps are created as a developer 🤖</li>
     <li>More will come soon!!!!</li>
   </ol>
 </p>
+
+<p>
+  Heres a list of features I plan to add at some point:
+  <ul>
+    <li>Themes</li>
+    <li>Fanfic (neocities only) <img src="https://archiveofourown.org/images/ao3_logos/logo_42.png" alt="AO3 logo" style="object-fit: contain; height: 1em; width: 1em; display: inline-block"></li>
+    <li>Character sheet viewer for my dnd characters 🎲</li>
+    <li>Github widget/embed</li>
+    <li>
+      RSS feed viewer (head over to <a
+        href="https://afterlifepro.neocities.org/?app=rss">my old neocities</a
+      > to use an RSS reader for now)
+    </li>
+    <li>Serenity OS emojis (waiting on <code style="display: inline">font-variant-emoji</code> to become <a href="https://caniuse.com/?search=font-variant-emoji">baseline supported in most browsers</a>)</li>
+    <li class="complete">v1.0.0</li>
+  </ul>
+</p>
+
+<style>
+  .wrapper {
+    background-color: #00000020;
+    width: calc(100% + 1rem);
+    margin-inline: calc(-1 * var(--overflow));
+    padding-block: var(--overflow);
+  }
+
+  li.complete {
+    list-style-type: "✓";
+  }
+</style>

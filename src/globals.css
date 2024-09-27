@@ -432,8 +432,9 @@ table {
 ********/
 ul {
   margin-inline-start: 1.5rem;
-  & li::marker {
-    content: "▪  ";
+  & li {
+    list-style-type: "▪ ";
+    list-style-position: outside;
   }
 }
 
