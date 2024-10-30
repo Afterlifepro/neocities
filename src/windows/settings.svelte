@@ -1,7 +1,7 @@
 <script lang="ts">
   // change event handler does not work as svelte/elements makes vite throw up
   // import { type ChangeEventHandler } from "svelte/elements";
-  import settings from "../settings.ts";
+  import settings from "@/settings.ts";
 
   /**
    * @type {import("svelte/elements").ChangeEventHandler<HTMLInputElement>}
