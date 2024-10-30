@@ -1,6 +1,6 @@
 <script lang="ts">
-  import log from "../logs";
-  import { apps, type newApp } from "../store";
+  import log from "@/logs";
+  import { apps, type newApp } from "@/store";
 
   export let app:newApp;
   export let props: { [key: string]: any } = {};

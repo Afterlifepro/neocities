@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { apps, templateApps } from "../../store";
+import { apps, templateApps } from "@/store";
 import { useStore } from "@nanostores/react";
 
 export default function AppManager() {

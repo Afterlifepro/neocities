@@ -5,11 +5,11 @@ import {
   useState,
   type CSSProperties,
 } from "react";
-import { apps } from "../store";
+import { apps } from "@/store";
 import "./Window.scoped.css";
 
 import goobersdef from "./goobersdef";
-import log from "../logs";
+import log from "@/logs";
 
 function Goobers({ columns }: { columns: number }) {
   const [goobers, setGoobers] = useState<JSX.Element[]>([]);
@@ -92,6 +92,7 @@ function Cap({
       {icon ? <img src={icon} /> : null}
       {/* @ts-expect-error */}
       <div inert="true">{title}</div>
+      <button onClick={() => {apps.minApp(id)}}>_</button>
       <button
         onClick={() => {
           apps.closeApp(id);

@@ -6,24 +6,6 @@
     accent?: `#${string}`;
   }[] = [];
   export let size = 5;
-
-  type hexChar =
-    | "0"
-    | "1"
-    | "2"
-    | "3"
-    | "4"
-    | "5"
-    | "6"
-    | "7"
-    | "8"
-    | "9"
-    | "a"
-    | "b"
-    | "c"
-    | "d"
-    | "e"
-    | "f";
 </script>
 
 <div class="wrapper">

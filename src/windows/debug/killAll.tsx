@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { apps } from "../../store";
-import log from "../../logs";
+import { apps } from "@/store";
+import log from "@/logs";
 
 export default function KillAll() {
   useEffect(() => {
@@ -10,7 +10,7 @@ export default function KillAll() {
         apps.closeApp(i);
       } catch (e) {
         if (!(e instanceof TypeError)) throw e;
-        log("" + i, "red", "already closed\n\n", e, console.error);
+        log("" + i, "red", "already closed\n\n");
       }
     });
   }, []);

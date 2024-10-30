@@ -1,9 +1,9 @@
-import { apps, openApps, type app } from "../store";
+import { apps, openApps, type app } from "@/store";
 import { useStore } from "@nanostores/react";
 import { useEffect, useState, type ReactElement } from "react";
 
 import "./taskbar.scoped.css";
-import log from "../logs";
+import log from "@/logs";
 
 function App(app: Omit<app, "content" | "layer">) {
   return (

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { apps } from "../store";
+import { apps } from "@/store";
 
 export default function NewAppTemplate(props: {
   title;

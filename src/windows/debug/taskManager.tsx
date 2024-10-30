@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { apps, openApps } from "../../store";
+import { apps, openApps } from "@/store";
 import { useStore } from "@nanostores/react";
 
 export default function TaskManager() {

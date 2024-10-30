@@ -1,6 +1,6 @@
 <script lang="ts">
-  import log from "../logs";
-  import { apps } from "../store";
+  import log from "@/logs";
+  import { apps } from "@/store";
 
   export let icon: string = "";
   export let href: string;

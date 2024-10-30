@@ -1,5 +1,5 @@
 import { deepMap } from "nanostores";
-import log from "./logs";
+import log from "@/logs";
 
 /**
  * type for an app. this is used when an app is created
@@ -114,6 +114,14 @@ export const apps = {
       ...openApps.get().apps[id],
       layer: this.newLayer,
     });
+  },
+
+  minApp(id: number) {
+    log(`minimising app ${id}`, "#008282", openApps.get().apps[id].title);
+    openApps.setKey(`apps.${id}`, {
+      ...openApps.get().apps[id],
+      layer: -1,
+    })
   },
 
   ///////////////

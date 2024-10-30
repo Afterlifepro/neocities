@@ -1,5 +1,5 @@
 import { map } from "nanostores";
-import log from "./logs";
+import log from "@/logs";
 
 const settings = {
   value: map<{
